@@ -57,7 +57,7 @@ try:
    st.write(prop_theft)
  
  
- st.title("Crime Against SC/ST Visualization")
+st.title("Crime Against SC/ST Visualization")
  
  uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2001_2012:")
  if uploaded_file is not None:
