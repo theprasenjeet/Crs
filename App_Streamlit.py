@@ -55,15 +55,15 @@ try:
    prop_theft = pd.read_csv(uploaded_file)
    st.write(prop_theft)
 
- uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2001_2012:")
- if uploaded_file is not None:
-   sc1 = pd.read_csv(uploaded_file)
-   st.write(sc1)
+ uploaded_file = st.file_uploader("Choose a file 1:")
+  if uploaded_file is not None:
+    sc1 = pd.read_csv(uploaded_file)
+    st.write(sc1)
  
- uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2013:")
- if uploaded_file is not None:
-   sc13 =pd.read_csv(uploaded_file)
-   st.write(sc13)
+  uploaded_file = st.file_uploader("Choose a file 2:")
+  if uploaded_file is not None:
+    sc13 =pd.read_csv(uploaded_file)
+    st.write(sc13)
  
  frames = [sc1 , sc13]
  sc = pd.concat(frames)
