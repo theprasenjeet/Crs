@@ -34,24 +34,24 @@ warnings.filterwarnings("ignore")
  
 st.title("HotSpot Visualization Crime")
 try:
-  uploaded_file = st.file_uploader("20_Victims_of_rape.csv:")
-  if uploaded_file is not None:
+ uploaded_file = st.file_uploader("20_Victims_of_rape.csv:")
+ if uploaded_file is not None:
    victims = pd.read_csv(uploaded_file)
    st.write(victims)
  
  
-  uploaded_file = st.file_uploader("35_Human_rights_violation_by_police.csv:")
-  if uploaded_file is not None:
+ uploaded_file = st.file_uploader("35_Human_rights_violation_by_police.csv:")
+ if uploaded_file is not None:
    police_hr = pd.read_csv(uploaded_file)
    st.write(police_hr)
  
-  uploaded_file = st.file_uploader("30_Auto_theft.csv:")
-  if uploaded_file is not None:
+ uploaded_file = st.file_uploader("30_Auto_theft.csv:")
+ if uploaded_file is not None:
    auto_theft = pd.read_csv(uploaded_file)
    st.write(auto_theft)
    
-  uploaded_file = st.file_uploader("10_Property_stolen_and_recovered.csv:")
-  if uploaded_file is not None:
+ uploaded_file = st.file_uploader("10_Property_stolen_and_recovered.csv:")
+ if uploaded_file is not None:
    prop_theft = pd.read_csv(uploaded_file)
    st.write(prop_theft)
  
