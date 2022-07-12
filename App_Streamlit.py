@@ -104,15 +104,19 @@ try:
  auto_theft_traced = auto_theft['Auto_Theft_Coordinated/Traced'].sum()
  auto_theft_recovered = auto_theft['Auto_Theft_Recovered'].sum()
  auto_theft_stolen = auto_theft['Auto_Theft_Stolen'].sum()
-
  vehicle_group = ['Vehicles Stolen','Vehicles Traced','Vehicles Recovered']
  vehicle_vals = [auto_theft_stolen,auto_theft_traced,auto_theft_recovered]
-
  colors = ['crimson','gold','green']
-
  fig = go.Figure(data=[go.Pie(labels=vehicle_group, values=vehicle_vals,sort=False,marker=dict(colors=colors),textfont_size=12)])
-
  st.write(fig)
+ st.caption('Out of **2,467,182** vehicles stolen, **21.2%** have been recovered')
+ 
+ st.subheader('****Year wise vehicles stolen****')
+ g5 = pd.DataFrame(auto_theft.groupby(['Year'])['Auto_Theft_Stolen'].sum().reset_index())
+ g5.columns = ['Year','Vehicles Stolen']
+ fig = px.bar(g5,x='Year',y='Vehicles Stolen',color_discrete_sequence=['#DC143C'])
+ st.write(fig)
+ st.caption('Seems to be **linear** growth of vehicles stolen')
  
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
