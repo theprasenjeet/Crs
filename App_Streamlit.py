@@ -118,6 +118,21 @@ try:
  st.write(fig)
  st.caption('Seems to be **linear** growth of vehicles stolen')
  
+ 
+ st.subheader('****Types of vehicles stolen****')
+ vehicle_list = ['Motor Cycles/ Scooters','Motor Car/Taxi/Jeep','Buses',
+               'Goods carrying vehicles (Trucks/Tempo etc)','Other Motor vehicles']
+ 
+ sr_no = [1,2,3,4,5]
+
+ fig = go.Figure(data=[go.Table(header=dict(values=['Sr No','Vehicle type'],
+                                          fill_color='deepskyblue',
+                                           height=30),
+                 cells=dict(values=[sr_no,vehicle_list],
+                            height=30))
+                     ])
+ st.write(fig)
+
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
