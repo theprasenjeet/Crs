@@ -133,6 +133,14 @@ try:
                      ])
  st.write(fig)
 
+ st.subheader('Top 10 States/UT with highest number of motor cycles stolen')
+ motor_c = auto_theft[auto_theft['Sub_Group_Name']=='1. Motor Cycles/ Scooters']
+ g8 = pd.DataFrame(motor_c.groupby(['Area_Name'])['Auto_Theft_Stolen'].sum().reset_index())
+ g8_sorted = g8.sort_values(['Auto_Theft_Stolen'],ascending=True)
+ fig = px.bar(g8_sorted.iloc[-10:,:], y='Area_Name', x='Auto_Theft_Stolen',
+             orientation='h',color_discrete_sequence=['#dc143c'])
+ st.write(fig)
+ 
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
