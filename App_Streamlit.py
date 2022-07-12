@@ -63,8 +63,23 @@ try:
  g.columns = ['Year','Cases Reported']
  fig = px.bar(g,x='Year',y='Cases Reported',color_discrete_sequence=['blue'])
  st.write(fig)
-
+ st.caption('- In **2005**, around **750** cases were reported which is the **highest** number of that decade.- The year **2010** recorded the **lowest** number of cases i.e **288**.')
  
+ st.subheader('#Incest rape cases reported from 2001 to 2010')
+ 
+ g1 = pd.DataFrame(inc_victims.groupby(['Area_Name'])['Rape_Cases_Reported'].sum().reset_index())
+ g1.columns = ['State/UT','Cases Reported']
+ g1.replace(to_replace='Arunachal Pradesh',value='Arunanchal Pradesh',inplace=True)
+ shp_gdf = gpd.read_file('Indian_states.shp')
+ merged = shp_gdf.set_index('st_nm').join(g1.set_index('State/UT'))
+
+ fig, ax = plt.subplots(1, figsize=(10, 10))
+ ax.axis('off')
+ ax.set_title('State-wise Rape-Cases Reported (2001-2010)',
+             fontdict={'fontsize': '15', 'fontweight' : '3'})
+ fig = merged.plot(column='Cases Reported', cmap='Reds', linewidth=0.5, ax=ax, edgecolor='0.2',legend=True)
+ st.write(fig)
+
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
