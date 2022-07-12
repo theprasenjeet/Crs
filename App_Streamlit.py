@@ -97,7 +97,23 @@ try:
  fig.update_layout(barmode='group',xaxis_title='Year',yaxis_title='Number of policemen')
  st.write(fig)
  
+ st.caption('- In 2009, **69.87%** of policemen have been convicted - highest of the decade')
+ st.caption('-For about **three** consecutive years, **2005, 2006, 2007** there has been **no** conviction of policemen')
+ 
+ st.subheader('****Auto Theft cases****')
+ auto_theft_traced = auto_theft['Auto_Theft_Coordinated/Traced'].sum()
+ auto_theft_recovered = auto_theft['Auto_Theft_Recovered'].sum()
+ auto_theft_stolen = auto_theft['Auto_Theft_Stolen'].sum()
 
+ vehicle_group = ['Vehicles Stolen','Vehicles Traced','Vehicles Recovered']
+ vehicle_vals = [auto_theft_stolen,auto_theft_traced,auto_theft_recovered]
+
+ colors = ['crimson','gold','green']
+
+ fig = go.Figure(data=[go.Pie(labels=vehicle_group, values=vehicle_vals,sort=False,marker=dict(colors=colors),textfont_size=12)])
+
+ st.write(fig)
+ 
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
