@@ -10,3 +10,4 @@ pysal
 geopandas
 pyproj
 fiona
+cufflinks
