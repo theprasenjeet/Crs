@@ -141,8 +141,40 @@ try:
              orientation='h',color_discrete_sequence=['#dc143c'])
  st.write(fig)
  
- st.subheader('****# Conclusion****')
- st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
+ st.subheader('Property theft cases')
+ 
+ prop_theft_recovered = prop_theft['Cases_Property_Recovered'].sum()
+ prop_theft_stolen = prop_theft['Cases_Property_Stolen'].sum()
+
+ prop_group = ['Property Stolen Cases','Property Recovered Cases']
+ prop_vals = [prop_theft_stolen,prop_theft_recovered]
+
+ colors = ['red','green']
+
+ fig = go.Figure(data=[go.Pie(labels=prop_group, values=prop_vals,sort=False,
+                            marker=dict(colors=colors),textfont_size=12)])
+
+ st.write(fig)
+ 
+ 
+ st.subheader('****Year-wise Value of Property Stolen and Recovered****')
+ g9 = pd.DataFrame(prop_theft.groupby(['Year'])['Value_of_Property_Recovered','Value_of_Property_Stolen'].sum().reset_index())
+
+ year=['2001','2002','2003','2004','2005','2006','2007','2008','2009','2010']
+
+ fig = go.Figure(data=[
+    go.Bar(name='Property Recovered', x=year, y=g9['Value_of_Property_Recovered'],
+           marker_color='gold'),
+    go.Bar(name='Property Stolen', x=year, y=g9['Value_of_Property_Stolen'],
+          marker_color='darkblue')
+])
+
+ fig.update_layout(barmode='group',xaxis_title='Year',yaxis_title='Value in Rupees',
+                 title='Year-wise Value of Property Stolen and Recovered')
+ st.write(fig)
+ 
+ 
+ st.subheader('****Analysis Completed****')
 except:
  st.error("Please select proper file")
  st.stop()
