@@ -8,8 +8,14 @@ from matplotlib import cm
 import matplotlib
 import plotly.graph_objects as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-init_notebook_mode(connected=True)    #THIS LINE IS MOST IMPORTANT AS THIS WILL DISPLAY PLOT ON
- #NOTEBOOK WHILE KERNEL IS RUNNING
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
+from plotly.colors import n_colors
+from plotly.subplots import make_subplots
+init_notebook_mode(connected=True)
+import cufflinks as cf
+cf.go_offline()
  
  
  
@@ -28,12 +34,37 @@ warnings.filterwarnings("ignore")
  
 st.title("HotSpot Visualization")
 try:
- uploaded_file = st.file_uploader("Choose a file 1:")
+  uploaded_file = st.file_uploader("20_Victims_of_rape.csv:")
+  if uploaded_file is not None:
+   victims = pd.read_csv(uploaded_file)
+   st.write(victims)
+ 
+ 
+  uploaded_file = st.file_uploader("35_Human_rights_violation_by_police.csv:")
+ if uploaded_file is not None:
+   police_hr = pd.read_csv(uploaded_file)
+   st.write(police_hr)
+ 
+ 
+   uploaded_file = st.file_uploader("30_Auto_theft.csv:")
+ if uploaded_file is not None:
+   auto_theft = pd.read_csv(uploaded_file)
+   st.write(auto_theft)
+   
+    uploaded_file = st.file_uploader("10_Property_stolen_and_recovered.csv:")
+ if uploaded_file is not None:
+   auto_theft = pd.read_csv(prop_theft)
+   st.write(prop_theft)
+ 
+ 
+ 
+ 
+ uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2001_2012:")
  if uploaded_file is not None:
    sc1 = pd.read_csv(uploaded_file)
    st.write(sc1)
  
- uploaded_file = st.file_uploader("Choose a file 2:")
+ uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2013:")
  if uploaded_file is not None:
    sc13 =pd.read_csv(uploaded_file)
    st.write(sc13)
