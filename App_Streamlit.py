@@ -58,11 +58,11 @@ try:
  
  st.subheader('#Incest rape cases reported from 2001 to 2010')
   
-  inc_victims = victims[victims['Subgroup']=='Victims of Incest Rape']
-  g = pd.DataFrame(inc_victims.groupby(['Year'])['Rape_Cases_Reported'].sum().reset_index())
-  g.columns = ['Year','Cases Reported']
-  fig = px.bar(g,x='Year',y='Cases Reported',color_discrete_sequence=['blue'])
-  st.write(fig)
+ inc_victims = victims[victims['Subgroup']=='Victims of Incest Rape']
+ g = pd.DataFrame(inc_victims.groupby(['Year'])['Rape_Cases_Reported'].sum().reset_index())
+ g.columns = ['Year','Cases Reported']
+ fig = px.bar(g,x='Year',y='Cases Reported',color_discrete_sequence=['blue'])
+ st.write(fig)
 
  
  st.subheader('****# Conclusion****')
