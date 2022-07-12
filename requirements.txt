@@ -1,0 +1,12 @@
+scikit-learn
+scipy
+seaborn
+statsmodels
+streamlit
+plotly
+numpy
+matplotlib
+pysal
+geopandas
+pyproj
+fiona
