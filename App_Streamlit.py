@@ -70,7 +70,7 @@ try:
  g1 = pd.DataFrame(inc_victims.groupby(['Area_Name'])['Rape_Cases_Reported'].sum().reset_index())
  g1.columns = ['State/UT','Cases Reported']
  g1.replace(to_replace='Arunachal Pradesh',value='Arunanchal Pradesh',inplace=True)
- shp_gdf = gpd.read_file('Indian_states.shp')
+ shp_gdf = gpd.read_file('https://github.com/theprasenjeet/Crs/blob/main/Indian_States.shp')
  merged = shp_gdf.set_index('st_nm').join(g1.set_index('State/UT'))
 
  fig, ax = plt.subplots(1, figsize=(10, 10))
