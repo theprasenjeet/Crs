@@ -56,7 +56,7 @@ try:
    st.write(prop_theft)
  
  
-  st.subheader('#Incest rape cases reported from 2001 to 2010')
+ st.subheader('#Incest rape cases reported from 2001 to 2010')
   
   inc_victims = victims[victims['Subgroup']=='Victims of Incest Rape']
   g = pd.DataFrame(inc_victims.groupby(['Year'])['Rape_Cases_Reported'].sum().reset_index())
