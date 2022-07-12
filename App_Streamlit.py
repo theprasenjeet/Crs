@@ -83,5 +83,5 @@ try:
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
-        st.error("Please select proper file")
-        st.stop()
+ st.error("Please select proper file")
+ st.stop()
