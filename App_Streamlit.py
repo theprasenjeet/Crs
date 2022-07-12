@@ -45,7 +45,6 @@ try:
    police_hr = pd.read_csv(uploaded_file)
    st.write(police_hr)
  
- 
   uploaded_file = st.file_uploader("30_Auto_theft.csv:")
   if uploaded_file is not None:
    auto_theft = pd.read_csv(uploaded_file)
@@ -55,9 +54,7 @@ try:
   if uploaded_file is not None:
    prop_theft = pd.read_csv(uploaded_file)
    st.write(prop_theft)
- 
 
- 
  uploaded_file = st.file_uploader("02_01_District_wise_crimes_committed_against_SC_2001_2012:")
  if uploaded_file is not None:
    sc1 = pd.read_csv(uploaded_file)
