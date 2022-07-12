@@ -65,20 +65,38 @@ try:
  st.write(fig)
  st.caption('- In **2005**, around **750** cases were reported which is the **highest** number of that decade.- The year **2010** recorded the **lowest** number of cases i.e **288**.')
  
- st.subheader('#Incest rape cases reported from 2001 to 2010')
+ st.subheader('#Cases registered against Police under Human Rights violations from 2001 to 2010')
  
- g1 = pd.DataFrame(inc_victims.groupby(['Area_Name'])['Rape_Cases_Reported'].sum().reset_index())
- g1.columns = ['State/UT','Cases Reported']
- g1.replace(to_replace='Arunachal Pradesh',value='Arunanchal Pradesh',inplace=True)
- shp_gdf = gpd.read_file('https://github.com/theprasenjeet/Crs/blob/main/Indian_States.shp')
- merged = shp_gdf.set_index('st_nm').join(g1.set_index('State/UT'))
-
- fig, ax = plt.subplots(1, figsize=(10, 10))
- ax.axis('off')
- ax.set_title('State-wise Rape-Cases Reported (2001-2010)',
-             fontdict={'fontsize': '15', 'fontweight' : '3'})
- fig = merged.plot(column='Cases Reported', cmap='Reds', linewidth=0.5, ax=ax, edgecolor='0.2',legend=True)
+ g3 = pd.DataFrame(police_hr.groupby(['Year'])['Cases_Registered_under_Human_Rights_Violations'].sum().reset_index())
+ g3.columns = ['Year','Cases Registered']
+ fig = px.bar(g3,x='Year',y='Cases Registered',color_discrete_sequence=['green'])
  st.write(fig)
+ st.caption('- In **2008**, highest number of cases were recorded - **506**')
+ st.caption('- The year **2006** recorded **least** number of cases i.e **58**')
+ 
+ st.subheader('#Cases registered against Police under Human Rights violations from 2001 to 2010')
+ 
+ #Cases Registed under Human Rights Violation -  Fake encounter killings
+ fake_enc_df = police_hr[police_hr['Group_Name']=='HR_Fake encounter killings'] 
+ fake_enc_df.Cases_Registered_under_Human_Rights_Violations.sum()
+ 
+ #Cases Registed under Human Rights Violation -  False implication
+ false_imp_df = police_hr[police_hr['Group_Name']=='HR_False implication'] 
+ false_imp_df.Cases_Registered_under_Human_Rights_Violations.sum()
+ 
+ g4 = pd.DataFrame(police_hr.groupby(['Year'])['Policemen_Chargesheeted','Policemen_Convicted'].sum().reset_index())
+
+ year=['2001','2002','2003','2004','2005','2006','2007','2008','2009','2010']
+
+ fig = go.Figure(data=[
+    go.Bar(name='Policemen Chargesheeted', x=year, y=g4['Policemen_Chargesheeted'],
+           marker_color='purple'),
+    go.Bar(name='Policemen Convicted', x=year, y=g4['Policemen_Convicted'],
+          marker_color='red')])
+
+ fig.update_layout(barmode='group',xaxis_title='Year',yaxis_title='Number of policemen')
+ st.write(fig)
+ 
 
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
