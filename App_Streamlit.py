@@ -55,6 +55,16 @@ try:
    prop_theft = pd.read_csv(uploaded_file)
    st.write(prop_theft)
  
+ 
+  st.subheader('#Incest rape cases reported from 2001 to 2010')
+  
+  inc_victims = victims[victims['Subgroup']=='Victims of Incest Rape']
+  g = pd.DataFrame(inc_victims.groupby(['Year'])['Rape_Cases_Reported'].sum().reset_index())
+  g.columns = ['Year','Cases Reported']
+  fig = px.bar(g,x='Year',y='Cases Reported',color_discrete_sequence=['blue'])
+  st.write(fig)
+
+ 
  st.subheader('****# Conclusion****')
  st.caption('Despite governments best effort the number of atrocities and hurt cases are increasing over the years. **Rajasthan ,Uttarpradesh , Bihar ,Maharashtra and Rajasthan** seem to be hotspot for crimes against Scs.')
 except:
